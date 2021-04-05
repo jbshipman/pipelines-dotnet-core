@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
 
 variables:
   solution: '**/*.sln'
@@ -21,7 +21,7 @@ steps:
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-    vstsFeed: 'my-project/my-project-scoped-feed'
+    # vstsFeed: 'my-project/my-project-scoped-feed'
     includeNuGetOrg: false
     restoreSolution: '**/*.sln'
 
