@@ -10,20 +10,20 @@ pool:
   vmImage: 'windows-2019'
 
 variables:
-  solution: '**/*.sln'
+  solution: '/dotnet/aspnet/webapp/Application/SampleWebApplication.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-    vstsFeed: 'baf37729-f31c-4d9d-8351-91f0cf5b8813'
-    includeNuGetOrg: false
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'restore'
+#     restoreSolution: '**/*.sln'
+#     feedsToUse: 'select'
+#     vstsFeed: 'baf37729-f31c-4d9d-8351-91f0cf5b8813'
+#     includeNuGetOrg: false
 
 - task: VSBuild@1
   inputs:
