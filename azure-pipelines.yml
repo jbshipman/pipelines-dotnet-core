@@ -20,10 +20,10 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
-    feedsToUse: 'select'
-    # vstsFeed: 'my-project/my-project-scoped-feed'
-    includeNuGetOrg: false
     restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: 'baf37729-f31c-4d9d-8351-91f0cf5b8813'
+    includeNuGetOrg: false
 
 - task: VSBuild@1
   inputs:
@@ -31,8 +31,11 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    restoreNugetPackages: true
+    msbuildArchitecture: 'x64'
 
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    batchingBasedOnAgentsOption
